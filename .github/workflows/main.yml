@@ -24,7 +24,7 @@ jobs:
         run: |
           python main.py
       - name: Upload Test Logs
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: selenium-logs
           path: test_*.log
