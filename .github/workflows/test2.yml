@@ -22,7 +22,7 @@ jobs:
           sudo safaridriver --enable
       - name: Run Selenium Tests
         run: |
-          python main.py
+          python main.py | tee -a test_register.log
       - name: Send Notification if Tests Fail
         if: failure()
         run: |
