@@ -15,7 +15,7 @@ from tests.withdraw_test.test_withdrawtransfer import TestWithdrawTransfer
 #from tests.withdraw_test.test_ewallet import TestEWallet
 #from tests.coupon_test.test_coupon import TestCoupon
 #from tests.transaction_history_test.test_history import TestHistory
-from tests.test_profile import TestProfile
+from tests.test_profile import TestProfilePage
 from tests.deposit_test.test_spamdeposit import TestSpamDeposit
 from tests.transfer_test.test_transfer import TestTransfer
 from tests.transfer_test.test_main_provider import TestMainProvider
@@ -159,11 +159,11 @@ def create_test_suite(language, browser):
     suite = unittest.TestSuite()
 
     # test_classes = [
-    #    TestLogin, TestRegister, TestSetting, TestPassword, TestProfile, TestQuickReload, TestBankTransfer, TestTransfer,
+    #    TestLogin, TestRegister, TestSetting, TestPassword, TestProfilePage, TestQuickReload, TestBankTransfer, TestTransfer,
     #    TestSpamDeposit, TestWithdrawTransfer, TestEWallet, TestCoupon, TestHistory,
     #    TestDailyCheckIn, TestDailyMission, TestInviteFriends, TestLuckyWheelSpinPage, TestProfilePage, TestPromotion
     # ]
-    test_classes = [TestProfile]
+    test_classes = [TestProfilePage]
 
     for test_class in test_classes:
         # Generate test methods if it's TestRevert
