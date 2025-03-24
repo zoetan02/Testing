@@ -23,6 +23,11 @@ jobs:
       - name: Run Selenium Tests
         run: |
           python main.py
+      - name: Upload Test Logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: selenium-logs
+          path: test_*.log
       - name: Send Notification if Tests Fail
         if: failure()
         run: |
