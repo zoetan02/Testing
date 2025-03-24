@@ -226,7 +226,7 @@ if __name__ == "__main__":
     # languages = ["cn", "en", "bm"]
     #browsers = ["chrome", "firefox","edge","safari"]
     languages = ["bm"]
-    browsers = ["firefox"]
+    browsers = ["chrome"]
     processes = []
 
     for browser in browsers:
