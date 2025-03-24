@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: register-logs
-          path: test_*.log  
+          path: test_*.log 
       - name: Send Notification if Tests Fail
         if: failure()
         run: |
