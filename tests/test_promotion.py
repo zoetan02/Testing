@@ -14,7 +14,6 @@ from tests.authentication_test.base_test import BaseTest
 import pyperclip
 from PIL import Image
 import io
-from pyzbar.pyzbar import decode
 from urllib.parse import urlparse, parse_qs
 from tests.test_init import TestInit
 from typing import Dict, Any, Optional, List, Union, Tuple, BinaryIO, TypeVar, Type
