@@ -164,7 +164,7 @@ def create_test_suite(language, browser):
     #    TestSpamDeposit, TestWithdrawTransfer, TestEWallet, TestCoupon, TestHistory,
     #    TestDailyCheckIn, TestDailyMission, TestInviteFriends, TestLuckyWheelSpinPage, TestProfilePage, TestPromotion
     # ]
-    test_classes = [TestProfilePage]
+    test_classes = [TestLogin]
 
     for test_class in test_classes:
         # Generate test methods if it's TestRevert
