@@ -1,6 +1,6 @@
 name: Branch Test2
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   selenium-tests:
@@ -23,12 +23,8 @@ jobs:
       - name: Run Selenium Tests
         run: |
           python main.py
-      - name: Upload Register Logs
+      - name: Upload Test Logs
         uses: actions/upload-artifact@v4
         with:
-          name: register-logs
+          name: test-logs
           path: test_*.log 
-      - name: Send Notification if Tests Fail
-        if: failure()
-        run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text": "⚠️ Selenium tests failed! Check the logs: https://github.com/${{ github.repository }}/actions"}' ${{ secrets.SLACK_WEBHOOK }}
