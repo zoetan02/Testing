@@ -28,7 +28,3 @@ jobs:
         with:
           name: selenium-logs
           path: test_*.log
-      - name: Send Notification if Tests Fail
-        if: failure()
-        run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text": "⚠️ Selenium tests failed! Check the logs: https://github.com/${{ github.repository }}/actions"}' ${{ secrets.SLACK_WEBHOOK }}

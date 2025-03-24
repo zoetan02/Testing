@@ -21,6 +21,7 @@ from tests.transfer_test.test_transfer import TestTransfer
 from tests.transfer_test.test_main_provider import TestMainProvider
 from tests.transfer_test.test_provider_to_provider import TestProviderToProvider
 from tests.revert_test.revert_test import TestRevert
+import sys
 
 
 class CustomTestResult(unittest.TextTestResult):
@@ -203,9 +204,22 @@ def run_tests(language, browser):
             logging.FileHandler(log_filename),
             #logging.StreamHandler()  # This will print to console
         ])
+    
+    class LoggerWriter:
+        def __init__(self, log_file):
+            self.log = open(log_file, "a")
 
-    logging.info(
-        f"Starting test run in {browser} browser for {language} language...")
+        def write(self, message):
+            self.log.write(message)
+            self.log.flush()
+            sys.__stdout__.write(message)
+
+        def flush(self):
+            self.log.flush()
+    sys.stdout = LoggerWriter(log_filename)
+    sys.stderr = LoggerWriter(log_filename)
+
+    logging.info(f"Starting test run in {browser} browser for {language} language...")
     suite = create_test_suite(language, browser)
     runner = CustomTestRunner(language, browser, verbosity=2)
     result = runner.run(suite)
