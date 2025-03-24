@@ -21,6 +21,7 @@ from tests.transfer_test.test_transfer import TestTransfer
 from tests.transfer_test.test_main_provider import TestMainProvider
 from tests.transfer_test.test_provider_to_provider import TestProviderToProvider
 from tests.revert_test.revert_test import TestRevert
+import sys
 
 
 class CustomTestResult(unittest.TextTestResult):
@@ -159,11 +160,11 @@ def create_test_suite(language, browser):
     suite = unittest.TestSuite()
 
     # test_classes = [
-    #    TestLogin, TestRegister, TestSetting, TestPassword, TestProfilePage, TestQuickReload, TestBankTransfer, TestTransfer,
+    #    TestLogin, TestRegister, TestSetting, TestPassword, TestProfile, TestQuickReload, TestBankTransfer, TestTransfer,
     #    TestSpamDeposit, TestWithdrawTransfer, TestEWallet, TestCoupon, TestHistory,
     #    TestDailyCheckIn, TestDailyMission, TestInviteFriends, TestLuckyWheelSpinPage, TestProfilePage, TestPromotion
     # ]
-    test_classes = [TestProfilePage]
+    test_classes = [TestLogin]
 
     for test_class in test_classes:
         # Generate test methods if it's TestRevert
@@ -195,6 +196,7 @@ def create_test_suite(language, browser):
 def run_tests(language, browser):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_filename = f"TestResults_{language}_{browser}_{timestamp}.log"
+    result_filename = f"test_{language}_{browser}_{timestamp}.log"
 
     logging.basicConfig(
         level=logging.INFO,
@@ -203,6 +205,22 @@ def run_tests(language, browser):
             logging.FileHandler(log_filename),
             #logging.StreamHandler()  # This will print to console
         ])
+
+    class LoggerWriter:
+
+        def __init__(self, log_file):
+            self.log = open(log_file, "a")
+
+        def write(self, message):
+            self.log.write(message)
+            self.log.flush()
+            sys.__stdout__.write(message)
+
+        def flush(self):
+            self.log.flush()
+
+    sys.stdout = LoggerWriter(result_filename)
+    sys.stderr = LoggerWriter(result_filename)
 
     logging.info(
         f"Starting test run in {browser} browser for {language} language...")
