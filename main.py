@@ -11,6 +11,7 @@ from tests.authentication_test.test_register import TestRegister
 #from tests.authentication_test.test_forgotpassword import TestPassword
 from tests.deposit_test.test_quickreload import TestQuickReload
 from tests.deposit_test.test_banktransfer import TestBankTransfer
+from tests.test_promotion import TestPromotion
 from tests.withdraw_test.test_withdrawtransfer import TestWithdrawTransfer
 #from tests.withdraw_test.test_ewallet import TestEWallet
 #from tests.coupon_test.test_coupon import TestCoupon
@@ -164,7 +165,7 @@ def create_test_suite(language, browser):
     #    TestSpamDeposit, TestWithdrawTransfer, TestEWallet, TestCoupon, TestHistory,
     #    TestDailyCheckIn, TestDailyMission, TestInviteFriends, TestLuckyWheelSpinPage, TestProfilePage, TestPromotion
     # ]
-    test_classes = [TestLogin]
+    test_classes = [TestPromotion]
 
     for test_class in test_classes:
         # Generate test methods if it's TestRevert
