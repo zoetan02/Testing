@@ -164,7 +164,7 @@ def create_test_suite(language, browser):
     #    TestSpamDeposit, TestWithdrawTransfer, TestEWallet, TestCoupon, TestHistory,
     #    TestDailyCheckIn, TestDailyMission, TestInviteFriends, TestLuckyWheelSpinPage, TestProfilePage, TestPromotion
     # ]
-    test_classes = [TestProfilePage]
+    test_classes = [TestLogin]
 
     for test_class in test_classes:
         # Generate test methods if it's TestRevert
@@ -205,8 +205,9 @@ def run_tests(language, browser):
             logging.FileHandler(log_filename),
             #logging.StreamHandler()  # This will print to console
         ])
-    
+
     class LoggerWriter:
+
         def __init__(self, log_file):
             self.log = open(log_file, "a")
 
@@ -217,10 +218,12 @@ def run_tests(language, browser):
 
         def flush(self):
             self.log.flush()
+
     sys.stdout = LoggerWriter(result_filename)
     sys.stderr = LoggerWriter(result_filename)
 
-    logging.info(f"Starting test run in {browser} browser for {language} language...")
+    logging.info(
+        f"Starting test run in {browser} browser for {language} language...")
     suite = create_test_suite(language, browser)
     runner = CustomTestRunner(language, browser, verbosity=2)
     result = runner.run(suite)
