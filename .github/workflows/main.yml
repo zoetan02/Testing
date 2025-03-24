@@ -1,4 +1,4 @@
-name: Selenium Tests CI/CD
+name: Branch test 1
 
 on: [push, pull_request]
 
