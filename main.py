@@ -196,6 +196,7 @@ def create_test_suite(language, browser):
 def run_tests(language, browser):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_filename = f"TestResults_{language}_{browser}_{timestamp}.log"
+    result_filename = f"test_{language}_{browser}_{timestamp}.log"
 
     logging.basicConfig(
         level=logging.INFO,
@@ -216,8 +217,8 @@ def run_tests(language, browser):
 
         def flush(self):
             self.log.flush()
-    sys.stdout = LoggerWriter(log_filename)
-    sys.stderr = LoggerWriter(log_filename)
+    sys.stdout = LoggerWriter(result_filename)
+    sys.stderr = LoggerWriter(result_filename)
 
     logging.info(f"Starting test run in {browser} browser for {language} language...")
     suite = create_test_suite(language, browser)
