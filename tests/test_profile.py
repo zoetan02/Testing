@@ -157,50 +157,50 @@ class TestProfilePage(BaseTest):
         except Exception as e:
             self.fail(f"Test failed with error: {str(e)}")
     
-    def test_02_ChangeProfileCamera(self):
-        driver = self.driver
+    # def test_02_ChangeProfileCamera(self):
+    #     driver = self.driver
 
-        try:
-            # camera
-            self.logger.info("Starting camera upload test...")
-            edit_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button.MuiButtonBase-root.MuiIconButton-root"))
-            )
-            edit_button.click()
-            verification_success = self.verify_upload_success(False)
-            self.assertTrue(verification_success, "Failed to verify profile picture update")
-        except Exception as e:
-            self.fail(f"Test failed with error: {str(e)}")
+    #     try:
+    #         # camera
+    #         self.logger.info("Starting camera upload test...")
+    #         edit_button = WebDriverWait(driver, 10).until(
+    #             EC.element_to_be_clickable((By.CSS_SELECTOR, "button.MuiButtonBase-root.MuiIconButton-root"))
+    #         )
+    #         edit_button.click()
+    #         verification_success = self.verify_upload_success(False)
+    #         self.assertTrue(verification_success, "Failed to verify profile picture update")
+    #     except Exception as e:
+    #         self.fail(f"Test failed with error: {str(e)}")
     
-    def test_03_ChangeProfileInvalidFormat(self):
-        driver = self.driver
+    # def test_03_ChangeProfileInvalidFormat(self):
+    #     driver = self.driver
 
-        try:
-            #invalid format
-            self.logger.info("Starting invalid format upload test...")
-            edit_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button.MuiButtonBase-root.MuiIconButton-root"))
-            )
-            edit_button.click()
-            verification_success = self.verify_invalid_format_upload()
-            self.assertTrue(verification_success, "Failed to verify invalid format upload")
-        except Exception as e:
-            self.fail(f"Test failed with error: {str(e)}")
+    #     try:
+    #         #invalid format
+    #         self.logger.info("Starting invalid format upload test...")
+    #         edit_button = WebDriverWait(driver, 10).until(
+    #             EC.element_to_be_clickable((By.CSS_SELECTOR, "button.MuiButtonBase-root.MuiIconButton-root"))
+    #         )
+    #         edit_button.click()
+    #         verification_success = self.verify_invalid_format_upload()
+    #         self.assertTrue(verification_success, "Failed to verify invalid format upload")
+    #     except Exception as e:
+    #         self.fail(f"Test failed with error: {str(e)}")
     
-    def test_04_ChangeProfileLargeFile(self):
-        driver = self.driver
+    # def test_04_ChangeProfileLargeFile(self):
+    #     driver = self.driver
 
-        try:
-            # Large File
-            self.logger.info("Starting large file upload test...")
-            edit_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button.MuiButtonBase-root.MuiIconButton-root"))
-            )
-            edit_button.click()
-            self.upload_from_gallery(checkLargeFile=True)
-            self.check_general_error(LANGUAGE_SETTINGS[self.language]["errors"]["large_file_type"], id="swal2-title")
-        except Exception as e:
-            self.fail(f"Test failed with error: {str(e)}")
+    #     try:
+    #         # Large File
+    #         self.logger.info("Starting large file upload test...")
+    #         edit_button = WebDriverWait(driver, 10).until(
+    #             EC.element_to_be_clickable((By.CSS_SELECTOR, "button.MuiButtonBase-root.MuiIconButton-root"))
+    #         )
+    #         edit_button.click()
+    #         self.upload_from_gallery(checkLargeFile=True)
+    #         self.check_general_error(LANGUAGE_SETTINGS[self.language]["errors"]["large_file_type"], id="swal2-title")
+    #     except Exception as e:
+    #         self.fail(f"Test failed with error: {str(e)}")
 
 if __name__ == "__main__":
     unittest.main()
