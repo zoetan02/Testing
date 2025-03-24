@@ -88,8 +88,12 @@ class CustomTestRunner(unittest.TextTestRunner):
             ws = wb.active
             ws.title = f"{test_class}_{self.language}_{self.browser}"
 
-            pass_fill = PatternFill(start_color="90EE90", end_color="90EE90", fill_type="solid")
-            fail_fill = PatternFill(start_color="FFB6C1", end_color="FFB6C1", fill_type="solid")
+            pass_fill = PatternFill(start_color="90EE90",
+                                    end_color="90EE90",
+                                    fill_type="solid")
+            fail_fill = PatternFill(start_color="FFB6C1",
+                                    end_color="FFB6C1",
+                                    fill_type="solid")
             header_font = Font(bold=True)
 
             headers = ["Test Class", "Test Name", "Status", "Error Message"]
@@ -108,7 +112,9 @@ class CustomTestRunner(unittest.TextTestRunner):
                     error_type, error_value, traceback = error
                     error_msg = str(error_value)
 
-                    if isinstance(error_value, AssertionError) or "Test failed:" in error_msg:
+                    if isinstance(
+                            error_value,
+                            AssertionError) or "Test failed:" in error_msg:
                         ws.cell(row=row, column=4, value=error_msg)
                     else:
                         formatted_msg = f"Test failed: {error_msg}"
@@ -163,18 +169,25 @@ def create_test_suite(language, browser):
         # Generate test methods if it's TestRevert
         if test_class == TestRevert:
             # Generate the test methods
-            TestRevert.generate_test_methods(language=language, browser=browser)
+            TestRevert.generate_test_methods(language=language,
+                                             browser=browser)
             # Get all test methods (including auto-generated ones)
-            test_methods = TestRevert.get_test_methods(language=language, browser=browser)
+            test_methods = TestRevert.get_test_methods(language=language,
+                                                       browser=browser)
 
             # Add each test method to suite
             for method_name in test_methods:
-                suite.addTest(test_class(method_name, language=language, browser=browser))
+                suite.addTest(
+                    test_class(method_name, language=language,
+                               browser=browser))
         else:
             # Handle other test classes normally
             tests = unittest.TestLoader().loadTestsFromTestCase(test_class)
             for test in tests:
-                suite.addTest(test_class(test._testMethodName, language=language, browser=browser))
+                suite.addTest(
+                    test_class(test._testMethodName,
+                               language=language,
+                               browser=browser))
 
     return suite
 
@@ -184,13 +197,15 @@ def run_tests(language, browser):
     log_filename = f"TestResults_{language}_{browser}_{timestamp}.log"
 
     logging.basicConfig(
-        level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
             logging.FileHandler(log_filename),
             #logging.StreamHandler()  # This will print to console
-        ]
-    )
+        ])
 
-    logging.info(f"Starting test run in {browser} browser for {language} language...")
+    logging.info(
+        f"Starting test run in {browser} browser for {language} language...")
     suite = create_test_suite(language, browser)
     runner = CustomTestRunner(language, browser, verbosity=2)
     result = runner.run(suite)
@@ -216,8 +231,11 @@ if __name__ == "__main__":
 
     for browser in browsers:
         for language in languages:
-            logging.info(f"Starting test run for language: {language}, browser: {browser}")
-            process = multiprocessing.Process(target=run_tests, args=(language, browser))
+            logging.info(
+                f"Starting test run for language: {language}, browser: {browser}"
+            )
+            process = multiprocessing.Process(target=run_tests,
+                                              args=(language, browser))
             process.start()
             processes.append(process)
 
