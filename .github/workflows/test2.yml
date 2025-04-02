@@ -1,10 +1,10 @@
-name: Branch Test2
+name: Testing 
 
 on: [push]
 
 jobs:
   selenium-tests:
-    runs-on: macos-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -14,17 +14,30 @@ jobs:
         with:
           python-version: 3.12
 
+      # ✅ 安装 Chrome & ChromeDriver 134.0.6998.165
+      - name: Install Google Chrome & ChromeDriver
+        run: |
+          sudo apt update
+          wget -q -O google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome.deb
+          rm google-chrome.deb
+          wget -q "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/134.0.6998.165/linux64/chromedriver-linux64.zip"
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+          rm -rf chromedriver-linux64 chromedriver-linux64.zip
+          google-chrome --version && chromedriver --version
+
       - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
-      - name: Enable Safari WebDriver (Required for macOS)
-        run: |
-          sudo safaridriver --enable
+        run: pip install -r requirements.txt
+
       - name: Run Selenium Tests
-        run: |
-          python main.py
+        run: python main.py
+
+      - name: Show All Test Logs in Console
+        run: cat test_*.log || true  # 允许 cat 失败，避免影响流程
+
       - name: Upload Test Logs
         uses: actions/upload-artifact@v4
         with:
-          name: test-logs
-          path: test_*.log 
+          name: selenium-logs
+          path: test_*.log

@@ -1,4 +1,4 @@
-HEADLESS = False
+HEADLESS = True
 
 API_URL = "https://staging.sosyokmy.com/whitelabel-staging-2/public"
 
@@ -32,7 +32,8 @@ CREDENTIALS = {
         "username": "Settlee1",
         "password": "Settlee1",
     },
-    "incomplete_turnover": {  #can remove
+    "incomplete_turnover":
+    {  #can remove
         "username": "Incomplete3",
         "password": "Incomplete3",
     },
@@ -58,19 +59,32 @@ CREDENTIALS = {
     "image_path": "test_deposit.jpg",
     "BO_testing_url": "https://staging.sosyokmy.com/whitelabel-test/public",
     "BO_base_url": "https://staging.sosyokmy.com/whitelabel-staging-2/public",
-    "RejectDepositRequest": "{BO_base_url}/api/recharge/refuse/batch?user_ids[]={ID}&pass=123456",
-    "ProcessingDepositRequest": "{BO_base_url}/api/recharge/process/batch?user_ids[]={ID}&pass=123456",
-    "ApproveDepositRequest": "{BO_base_url}/api/recharge/approve?user_ids[]={ID}&pass=123456",
-    "RejectWithdrawRequest": "{BO_base_url}/api/withdraw/refuse/batch?user_ids[]={ID}&pass=123456",
-    "ProcessingWithdrawRequest": "{BO_base_url}/api/withdraw/process/batch?user_ids[]={ID}&pass=123456",
-    "ApproveWithdrawRequest": "{BO_base_url}/api/withdraw/approve?user_ids[]={ID}&pass=123456",
-    "CheckTurnover": "{BO_base_url}/api/check-turnover?pass=123456&user_id={ID}&lang={language}",
-    "ModifyTurnover": "{BO_base_url}/api/modify-turnover?pass=123456&user_id={userID}&turnover_id={turnover_id}&action={action}",
-    "SpecifyDateHistory": "{BO_base_url}/api/filter-records-by-date?type={record_type_value}&page=1&from={start_date}&to={end_date}",
-    "DateHistory": "{BO_base_url}/api/filter-records-by-date?type={record_type_value}&page=1&date={date_option_id}",
-    "PlaceBet": "{BO_base_url}/api/simulate-game-records?passcode=99999&user_id={userID}&amount={transfer_amount}&type={type}&provider_id={game_id}&game_record_date={game_record_date}",
-    "CreateDownline": "{BO_base_url}/api/qa-generate-user?pass=123456&user_id={userID}&t2=1&t3=1",
-    "CreateRebate": "{BO_base_url}/api/qa-calculate-rebate?pass=123456&user_ids={userID}&month={current_month}",
+    "RejectDepositRequest":
+    "{BO_base_url}/api/recharge/refuse/batch?user_ids[]={ID}&pass=123456",
+    "ProcessingDepositRequest":
+    "{BO_base_url}/api/recharge/process/batch?user_ids[]={ID}&pass=123456",
+    "ApproveDepositRequest":
+    "{BO_base_url}/api/recharge/approve?user_ids[]={ID}&pass=123456",
+    "RejectWithdrawRequest":
+    "{BO_base_url}/api/withdraw/refuse/batch?user_ids[]={ID}&pass=123456",
+    "ProcessingWithdrawRequest":
+    "{BO_base_url}/api/withdraw/process/batch?user_ids[]={ID}&pass=123456",
+    "ApproveWithdrawRequest":
+    "{BO_base_url}/api/withdraw/approve?user_ids[]={ID}&pass=123456",
+    "CheckTurnover":
+    "{BO_base_url}/api/check-turnover?pass=123456&user_id={ID}&lang={language}",
+    "ModifyTurnover":
+    "{BO_base_url}/api/modify-turnover?pass=123456&user_id={userID}&turnover_id={turnover_id}&action={action}",
+    "SpecifyDateHistory":
+    "{BO_base_url}/api/filter-records-by-date?type={record_type_value}&page=1&from={start_date}&to={end_date}",
+    "DateHistory":
+    "{BO_base_url}/api/filter-records-by-date?type={record_type_value}&page=1&date={date_option_id}",
+    "PlaceBet":
+    "{BO_base_url}/api/simulate-game-records?passcode=99999&user_id={userID}&amount={transfer_amount}&type={type}&provider_id={game_id}&game_record_date={game_record_date}",
+    "CreateDownline":
+    "{BO_base_url}/api/qa-generate-user?pass=123456&user_id={userID}&t2=1&t3=1",
+    "CreateRebate":
+    "{BO_base_url}/api/qa-calculate-rebate?pass=123456&user_ids={userID}&month={current_month}",
     "CheckRebatePercentage": "{BO_base_url}/api/qa-rebate-list?pass=123456",
     "Get4dHistory": "{BO_base_url}/api/user-4d-records-history",
     "Add4dCards": "{BO_base_url}/api/qa-redeem-fourd-card",
@@ -194,7 +208,8 @@ LANGUAGE_SETTINGS = {
             "surpassed_subtitle": "您已经超越该等级",
             "normal_subtitle": "注册后将自动成为普通会员",
             "topup_subtitle": "还差充值RM{topup_more}升级为{next_vip_name}会员",
-            "qualification_text": "所有新会员充值至少{recharge_amount}皆可升级成为永久{vip_name}会员",
+            "qualification_text":
+            "所有新会员充值至少{recharge_amount}皆可升级成为永久{vip_name}会员",
             "requirement_text": "至少存入{recharge_amount}的最低金额",
             "upgrade_button": "充值升级",
             "reached_button": "已达成"
@@ -202,7 +217,7 @@ LANGUAGE_SETTINGS = {
         "history": {
             "no_record": "No data available",
         },
-        "4d":{
+        "4d": {
             "card_name": "BOBO万字卡",
             "4d_card": "万字卡",
             "4d_card_receipt": "万字卡",
@@ -233,19 +248,24 @@ LANGUAGE_SETTINGS = {
             "Confirm New Password": "Halo2222",
         },
         "errors": {
-            "duplicate_account": "The username has already been taken.",  # ask to change
-            "password_less_than_8": "The password must be at least 8 characters.",
+            "duplicate_account":
+            "The username has already been taken.",  # ask to change
+            "password_less_than_8":
+            "The password must be at least 8 characters.",
             "password_format_wrong": "The password format is invalid.",
             "invalid_phone_format": "The phone format is invalid.",
             "phone_already_exists": "The phone has already been taken.",
             "invalid_username": "The username format is invalid.",
-            "username_larger_than_12": "The username may not be greater than 12 characters.",
+            "username_larger_than_12":
+            "The username may not be greater than 12 characters.",
             "registration_success": "Register Successful",
             "invalid_login": "Name or Password incorrect",
             "field_missing": "Please fill in this field.",
             "unmatch_password": "Password not match!",
-            "invalid_new_password": "New Password must contain at least 1 uppercase letter, 1 lowercase letter and 1 number!",
-            "new_password_invalid_length": "New password must contain at least 8 characters!",
+            "invalid_new_password":
+            "New Password must contain at least 1 uppercase letter, 1 lowercase letter and 1 number!",
+            "new_password_invalid_length":
+            "New password must contain at least 8 characters!",
             "deposit_less_than_30": "Minimum Deposit: RM30",
             "deposit_more_than_50000": "Maximum Deposit: RM50000",
             "empty_fields": "Please enter all required fields (*)",
@@ -257,19 +277,24 @@ LANGUAGE_SETTINGS = {
             "withdraw_less_than_50": "Minimum Withdraw: RM50",
             "is_required": "is required",
             "register_error": "Register Failed",
-            "withdraw_turnover_incomplete": "You haven't hit the turnover target, unable to withdraw",
-            "insufficient_main_wallet": "Main wallet balance is insufficient, if other wallets have balance, transfer them to the main wallet!",
+            "withdraw_turnover_incomplete":
+            "You haven't hit the turnover target, unable to withdraw",
+            "insufficient_main_wallet":
+            "Main wallet balance is insufficient, if other wallets have balance, transfer them to the main wallet!",
             "from_wallet_empty": "Transfer from is required",
             "to_wallet_empty": "Transfer to is required",
             "amount_empty": "Amount is required",
             "transfer_exceed_balance_limit": "You have insufficient balance.",
-            "transfer_invalid_amount": "Amount must be a number | Amount only accept for 2 decimal places",
+            "transfer_invalid_amount":
+            "Amount must be a number | Amount only accept for 2 decimal places",
             "zero_amount_invalid": "The amount entered is invalid.",
-            "transfer_same_wallet": "You cannot transfer between the same wallet.",
+            "transfer_same_wallet":
+            "You cannot transfer between the same wallet.",
             "bonus_locked": "Bonus locked",
             "system_error": "System error, please contact customer service.",
             "setting_password_empty": "is required",
-            "revert_error": "An error occurred, please contact customer service"
+            "revert_error":
+            "An error occurred, please contact customer service"
         },
         "success": {
             "withdraw_success": "Withdrawal Submitted",
@@ -325,16 +350,19 @@ LANGUAGE_SETTINGS = {
         "vip_member_level": {
             "surpassed_subtitle": "You have surpassed this level",
             "normal_subtitle": "Become Normal member after register",
-            "topup_subtitle": "Still need topup RM{topup_more} to upgrade to {next_vip_name} member",
-            "qualification_text": "Minimum deposit at least RM{recharge_amount} become lifetime {vip_name} member",
-            "requirement_text": "At least deposit minimum amount RM{recharge_amount}",
+            "topup_subtitle":
+            "Still need topup RM{topup_more} to upgrade to {next_vip_name} member",
+            "qualification_text":
+            "Minimum deposit at least RM{recharge_amount} become lifetime {vip_name} member",
+            "requirement_text":
+            "At least deposit minimum amount RM{recharge_amount}",
             "upgrade_button": "Topup & Upgrade",
             "reached_button": "Reached"
         },
         "history": {
             "no_record": "No data available",
         },
-        "4d":{
+        "4d": {
             "card_name": "BOBO Card",
             "4d_card": "4D Card",
             "4d_card_receipt": "4D Card",
@@ -372,13 +400,16 @@ LANGUAGE_SETTINGS = {
             "invalid_phone_format": "Format isian phone tidak valid.",
             "phone_already_exists": "Isian phone sudah ada sebelumnya.",
             "invalid_username": "Format isian username tidak valid.",
-            "username_larger_than_12": "Isian username seharusnya tidak lebih dari 12 karakter.",
+            "username_larger_than_12":
+            "Isian username seharusnya tidak lebih dari 12 karakter.",
             "registration_success": "Daftar berjaya",
             "invalid_login": "Nama pengguna atau kata laluan salah",
             "field_missing": "Please fill in this field.",
             "unmatch_password": "Kata Laluan tak sama!",
-            "invalid_new_password": "Kata Laluan Baru mesti mengandungi sekurang-kurangnya 1 huruf besar, 1 huruf kecil dan 1 nombor!",
-            "new_password_invalid_length": "Kata laluan baru mesti mengandungi paling kurang 8 aksara!",
+            "invalid_new_password":
+            "Kata Laluan Baru mesti mengandungi sekurang-kurangnya 1 huruf besar, 1 huruf kecil dan 1 nombor!",
+            "new_password_invalid_length":
+            "Kata laluan baru mesti mengandungi paling kurang 8 aksara!",
             "deposit_less_than_30": "Tambah Nilai Minimum: RM30",
             "deposit_more_than_50000": "Tambah Nilai Maksimum: RM50000",
             "empty_fields": "Sila masukkan semua medan (*)",
@@ -390,20 +421,28 @@ LANGUAGE_SETTINGS = {
             "withdraw_less_than_50": "Minimum dikeluar: RM50",
             "is_required": "is required",
             "register_error": "Daftar gagal",
-            "withdraw_turnover_incomplete": "Anda belum mencapai sasaran pusing ganti, tidak boleh mengeluarkan wang",
-            "insufficient_main_wallet": "Baki dompet utama tidak mencukupi, jika dompet lain mempunyai baki, sila pindahkan ke dompet utama!",
+            "withdraw_turnover_incomplete":
+            "Anda belum mencapai sasaran pusing ganti, tidak boleh mengeluarkan wang",
+            "insufficient_main_wallet":
+            "Baki dompet utama tidak mencukupi, jika dompet lain mempunyai baki, sila pindahkan ke dompet utama!",
             "from_wallet_empty": "Dari tidak boleh kosong",
             "to_wallet_empty": "Ke tidak boleh kosong",
             "amount_empty": "Jumlah tidak boleh kosong",
-            "transfer_exceed_balance_limit": "Anda tidak mempunyai cukup baki.",
-            "amount_decimal_places": "Jumlah harus berupa nombor | Jumlah hanya menerima 2 tempat perpuluhan",
+            "transfer_exceed_balance_limit":
+            "Anda tidak mempunyai cukup baki.",
+            "amount_decimal_places":
+            "Jumlah harus berupa nombor | Jumlah hanya menerima 2 tempat perpuluhan",
             "zero_amount_invalid": "Amaun yang dimasukkan tidak sah.",
-            "transfer_same_wallet": "Tidak boleh pindah antara dompet permainan yang sama.",
+            "transfer_same_wallet":
+            "Tidak boleh pindah antara dompet permainan yang sama.",
             "bonus_locked": "Bonus ditutup",
-            "system_error": "Ralat sistem, sila hubungi perkhidmatan pelanggan.",
-            "transfer_rollback": "Deposit ke {game_name} gagal, tetapi jumlahnya telah berjaya dikembalikan ke main.",
+            "system_error":
+            "Ralat sistem, sila hubungi perkhidmatan pelanggan.",
+            "transfer_rollback":
+            "Deposit ke {game_name} gagal, tetapi jumlahnya telah berjaya dikembalikan ke main.",
             "setting_password_empty": "Tidak boleh kosong",
-            "revert_error": "Ralat berlaku, sila hubungi perkhidmatan pelanggan."
+            "revert_error":
+            "Ralat berlaku, sila hubungi perkhidmatan pelanggan."
         },
         "success": {
             "withdraw_success": "Pengeluaran Dihantar",
@@ -459,8 +498,10 @@ LANGUAGE_SETTINGS = {
         "vip_member_level": {
             "surpassed_subtitle": "Anda telah melepasi Level ini",
             "normal_subtitle": "Selepas daftar akan jadi member biasa",
-            "topup_subtitle": "Topup lagi RM{topup_more} naik ke Ahli {next_vip_name}",
-            "qualification_text": "Deposit RM{recharge_amount} jadi Ahli {vip_name} kekal",
+            "topup_subtitle":
+            "Topup lagi RM{topup_more} naik ke Ahli {next_vip_name}",
+            "qualification_text":
+            "Deposit RM{recharge_amount} jadi Ahli {vip_name} kekal",
             "requirement_text": "minima deposit RM{recharge_amount}",
             "upgrade_button": "Topup",
             "reached_button": "Level Terkini"
@@ -468,7 +509,7 @@ LANGUAGE_SETTINGS = {
         "history": {
             "no_record": "No data available",
         },
-        "4d":{
+        "4d": {
             "card_name": "BOBO Kad",
             "4d_card": "4D Kad",
             "4d_card_receipt": "4D Card",
@@ -481,12 +522,15 @@ LANGUAGE_SETTINGS = {
     },
 }
 
-
 PROFILE_URL = {
-    "large_image_url": "https://sample-files.com/downloads/images/jpg/landscape_hires_4000x2667_6.83mb.jpg",
-    "replace_image_url": "https://bobo-bucket.s3.ap-southeast-1.amazonaws.com/whitelabel/default-profile/AvatarP1.png",
-    "valid_image_url": "https://bobo-bucket.s3.ap-southeast-1.amazonaws.com/chatbot/chatbot_avatar.png",
-    "invalid_format_url": "https://sample-files.com/downloads/documents/txt/simple.txt",
+    "large_image_url":
+    "https://sample-files.com/downloads/images/jpg/landscape_hires_4000x2667_6.83mb.jpg",
+    "replace_image_url":
+    "https://bobo-bucket.s3.ap-southeast-1.amazonaws.com/whitelabel/default-profile/AvatarP1.png",
+    "valid_image_url":
+    "https://bobo-bucket.s3.ap-southeast-1.amazonaws.com/chatbot/chatbot_avatar.png",
+    "invalid_format_url":
+    "https://sample-files.com/downloads/documents/txt/simple.txt",
 }
 
 LIVE_AGENT_URL = {
@@ -495,4 +539,4 @@ LIVE_AGENT_URL = {
     "telegram_base_url": "https://t.me/"
 }
 
-FOUR_D_PRIZES = [3400,1200,600,210,80]
+FOUR_D_PRIZES = [3400, 1200, 600, 210, 80]
