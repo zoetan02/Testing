@@ -14,30 +14,17 @@ jobs:
         with:
           python-version: 3.12
 
-      # ✅ Dynamically Install Google Chrome & Matching ChromeDriver
+      # ✅ 安装 Chrome & ChromeDriver 134.0.6998.165
       - name: Install Google Chrome & ChromeDriver
         run: |
           sudo apt update
-          
-          # Install Google Chrome
           wget -q -O google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y ./google-chrome.deb
           rm google-chrome.deb
-          
-          # Get installed Chrome version
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d. -f1)
-          
-          # Fetch the matching ChromeDriver version
-          CHROMEDRIVER_VERSION=$(wget -qO- "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-          
-          # Download and install the correct Chromedriver
-          wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
-          rm chromedriver_linux64.zip
-          
-          # Verify installed versions
+          wget -q "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/135.0.7049.52/linux64/chromedriver-linux64.zip"
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+          rm -rf chromedriver-linux64 chromedriver-linux64.zip
           google-chrome --version && chromedriver --version
 
       - name: Install Dependencies
@@ -47,7 +34,7 @@ jobs:
         run: python main.py
 
       - name: Show All Test Logs in Console
-        run: cat test_*.log || true  # Allows the command to fail without affecting the workflow
+        run: cat test_*.log || true  # 允许 cat 失败，避免影响流程
 
       - name: Upload Test Logs
         uses: actions/upload-artifact@v4
